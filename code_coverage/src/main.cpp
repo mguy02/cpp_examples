@@ -1,6 +1,6 @@
 #include <iostream>
 
-#include "lib.h"
+#include "calculator.h"
 
 // entry point of the main project
 int main(int argc, char** argv)

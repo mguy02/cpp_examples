@@ -1,4 +1,4 @@
-#include "lib.h"
+#include "calculator.h"
 #include <iostream>
 
 

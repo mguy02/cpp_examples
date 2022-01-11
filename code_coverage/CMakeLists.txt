@@ -35,11 +35,16 @@ file(GLOB GTESTS
 
 # Allow include to use paths relative to projct root
 include_directories(${PROJECT_SOURCE_DIR})
-#include_directories(${PROJECT_SOURCE_DIR}/googletest/googletest/include)
+include_directories(${PROJECT_SOURCE_DIR}/googletest/googletest/include)
 
 # create target
-#add_executable(run_tests tests/gtests.cpp ${GTESTS} ${SRC_FILES})
+add_executable(run_tests tests/gtests.cpp ${GTESTS} ${SRC_FILES})
 add_executable(project ${SRC_MAIN} ${SRC_FILES})
 
-# link run_tests to gtest and pthread
-#target_link_libraries(run_tests ${CMAKE_SOURCE_DIR}/build_gtest/lib/libgtest.a pthread)
+# link run_tests to gtest (and pthread on Unix)
+target_link_libraries(run_tests ${CMAKE_SOURCE_DIR}/build_gtest/lib/libgtest.a)
+if (UNIX)
+    target_link_libraries(run_tests pthread)
+endif(UNIX)
+
+
